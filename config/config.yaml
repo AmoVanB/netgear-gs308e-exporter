@@ -1,0 +1,5 @@
+switches:
+  - url: http://netgear-gs308e.local
+    password: password
+interval: 30
+port: 8080
