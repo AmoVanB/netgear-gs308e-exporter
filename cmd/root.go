@@ -18,7 +18,7 @@ func initConfig() {
 	viper.SetConfigFile(configFile)
 	err := viper.ReadInConfig()
 	if err != nil {
-		panic(fmt.Errorf("Fatal error reading config file: %s \n", err))
+		panic(fmt.Errorf("fatal error reading config file: %s", err))
 	}
 }
 
@@ -27,6 +27,7 @@ var rootCmd = &cobra.Command{
 	Short: "netgear-gs308e-exporter",
 }
 
+// Execute starts the program
 func Execute() {
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Print(err)

@@ -4,7 +4,7 @@ import (
 	"github.com/prometheus/client_golang/prometheus"
 )
 
-type ServiceMetrics struct {
+type exporterMetrics struct {
 	TransmittedBytes *prometheus.GaugeVec
 	ReceivedBytes    *prometheus.GaugeVec
 	CRCErrorPackets  *prometheus.GaugeVec
@@ -12,11 +12,11 @@ type ServiceMetrics struct {
 	PortSpeed        *prometheus.GaugeVec
 }
 
-var ServiceMetricsVar ServiceMetrics
+var Var exporterMetrics
 
 // InitMetrics sets new metrics and register them in Prometheus
 func InitMetrics() {
-	ServiceMetricsVar.TransmittedBytes = prometheus.NewGaugeVec(
+	Var.TransmittedBytes = prometheus.NewGaugeVec(
 		prometheus.GaugeOpts{
 			Namespace: "netgear_gs308e_exporter",
 			Name:      "tx_bytes",
@@ -24,9 +24,9 @@ func InitMetrics() {
 		},
 		[]string{"port", "switch"},
 	)
-	prometheus.MustRegister(ServiceMetricsVar.TransmittedBytes)
+	prometheus.MustRegister(Var.TransmittedBytes)
 
-	ServiceMetricsVar.ReceivedBytes = prometheus.NewGaugeVec(
+	Var.ReceivedBytes = prometheus.NewGaugeVec(
 		prometheus.GaugeOpts{
 			Namespace: "netgear_gs308e_exporter",
 			Name:      "rx_bytes",
@@ -34,9 +34,9 @@ func InitMetrics() {
 		},
 		[]string{"port", "switch"},
 	)
-	prometheus.MustRegister(ServiceMetricsVar.ReceivedBytes)
+	prometheus.MustRegister(Var.ReceivedBytes)
 
-	ServiceMetricsVar.CRCErrorPackets = prometheus.NewGaugeVec(
+	Var.CRCErrorPackets = prometheus.NewGaugeVec(
 		prometheus.GaugeOpts{
 			Namespace: "netgear_gs308e_exporter",
 			Name:      "crc_error_packets",
@@ -44,9 +44,9 @@ func InitMetrics() {
 		},
 		[]string{"port", "switch"},
 	)
-	prometheus.MustRegister(ServiceMetricsVar.CRCErrorPackets)
+	prometheus.MustRegister(Var.CRCErrorPackets)
 
-	ServiceMetricsVar.PortStatus = prometheus.NewGaugeVec(
+	Var.PortStatus = prometheus.NewGaugeVec(
 		prometheus.GaugeOpts{
 			Namespace: "netgear_gs308e_exporter",
 			Name:      "port_status",
@@ -54,9 +54,9 @@ func InitMetrics() {
 		},
 		[]string{"port", "switch"},
 	)
-	prometheus.MustRegister(ServiceMetricsVar.PortStatus)
+	prometheus.MustRegister(Var.PortStatus)
 
-	ServiceMetricsVar.PortSpeed = prometheus.NewGaugeVec(
+	Var.PortSpeed = prometheus.NewGaugeVec(
 		prometheus.GaugeOpts{
 			Namespace: "netgear_gs308e_exporter",
 			Name:      "port_speed_mbps",
@@ -64,5 +64,5 @@ func InitMetrics() {
 		},
 		[]string{"port", "switch"},
 	)
-	prometheus.MustRegister(ServiceMetricsVar.PortSpeed)
+	prometheus.MustRegister(Var.PortSpeed)
 }
