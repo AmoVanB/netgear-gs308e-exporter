@@ -58,13 +58,13 @@ func login(switchUrl, password string) (string, error) {
 	if err != nil {
 		return "", err
 	}
-	
+
 	// parse login page to get the random number
 	doc, err := goquery.NewDocumentFromReader(resp.Body)
 	if err != nil {
 		return "", err
 	}
-	
+
 	random, exists := doc.Find("#rand").Attr("value")
 	if !exists {
 		return "", fmt.Errorf("couldn't find the value of the 'rand' id")
@@ -83,7 +83,7 @@ func login(switchUrl, password string) (string, error) {
 	if err != nil {
 		return "", err
 	}
-	
+
 	cookie := resp.Header.Get("Set-Cookie")
 	if cookie == "" {
 		// check for an error message
@@ -133,9 +133,9 @@ func updatePortStats(config config.SwitchConfig, cookie string) error {
 	}
 
 	request := &http.Request{
-		Method:           http.MethodGet,
-		URL:              urlObj,
-		Header:           http.Header{
+		Method: http.MethodGet,
+		URL:    urlObj,
+		Header: http.Header{
 			"Cookie": []string{cookie},
 		},
 	}
@@ -180,9 +180,9 @@ func updatePortStatus(config config.SwitchConfig, cookie string) error {
 	}
 
 	request := &http.Request{
-		Method:           http.MethodGet,
-		URL:              urlObj,
-		Header:           http.Header{
+		Method: http.MethodGet,
+		URL:    urlObj,
+		Header: http.Header{
 			"Cookie": []string{cookie},
 		},
 	}

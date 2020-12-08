@@ -3,7 +3,7 @@ package config
 type Config struct {
 	Switches []SwitchConfig
 	Interval int
-	Port	 int
+	Port     int
 }
 
 type SwitchConfig struct {
@@ -14,5 +14,5 @@ type SwitchConfig struct {
 var Var = Config{
 	Switches: []SwitchConfig{},
 	Interval: 30,
-	Port: 8080,
+	Port:     8080,
 }

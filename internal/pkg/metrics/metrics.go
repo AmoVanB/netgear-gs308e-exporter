@@ -9,7 +9,7 @@ type ServiceMetrics struct {
 	ReceivedBytes    *prometheus.GaugeVec
 	CRCErrorPackets  *prometheus.GaugeVec
 	PortStatus       *prometheus.GaugeVec
-	PortSpeed		 *prometheus.GaugeVec
+	PortSpeed        *prometheus.GaugeVec
 }
 
 var ServiceMetricsVar ServiceMetrics
@@ -19,8 +19,8 @@ func InitMetrics() {
 	ServiceMetricsVar.TransmittedBytes = prometheus.NewGaugeVec(
 		prometheus.GaugeOpts{
 			Namespace: "netgear_gs308e_exporter",
-			Name: "tx_bytes",
-			Help: "The total number of bytes transmitted by a port of a Netgear GS308E switch",
+			Name:      "tx_bytes",
+			Help:      "The total number of bytes transmitted by a port of a Netgear GS308E switch",
 		},
 		[]string{"port", "switch"},
 	)
@@ -29,8 +29,8 @@ func InitMetrics() {
 	ServiceMetricsVar.ReceivedBytes = prometheus.NewGaugeVec(
 		prometheus.GaugeOpts{
 			Namespace: "netgear_gs308e_exporter",
-			Name: "rx_bytes",
-			Help: "The total number of bytes received by a port of a Netgear GS308E switch",
+			Name:      "rx_bytes",
+			Help:      "The total number of bytes received by a port of a Netgear GS308E switch",
 		},
 		[]string{"port", "switch"},
 	)
@@ -39,8 +39,8 @@ func InitMetrics() {
 	ServiceMetricsVar.CRCErrorPackets = prometheus.NewGaugeVec(
 		prometheus.GaugeOpts{
 			Namespace: "netgear_gs308e_exporter",
-			Name: "crc_error_packets",
-			Help: "The total number of CRC error packets on a port of a Netgear GS308E switch",
+			Name:      "crc_error_packets",
+			Help:      "The total number of CRC error packets on a port of a Netgear GS308E switch",
 		},
 		[]string{"port", "switch"},
 	)
@@ -49,8 +49,8 @@ func InitMetrics() {
 	ServiceMetricsVar.PortStatus = prometheus.NewGaugeVec(
 		prometheus.GaugeOpts{
 			Namespace: "netgear_gs308e_exporter",
-			Name: "port_status",
-			Help: "1 if the port is Up, 0 otherwise",
+			Name:      "port_status",
+			Help:      "1 if the port is Up, 0 otherwise",
 		},
 		[]string{"port", "switch"},
 	)
@@ -59,8 +59,8 @@ func InitMetrics() {
 	ServiceMetricsVar.PortSpeed = prometheus.NewGaugeVec(
 		prometheus.GaugeOpts{
 			Namespace: "netgear_gs308e_exporter",
-			Name: "port_speed_mbps",
-			Help: "Linked speed of a port of a Netgear GS308E switch",
+			Name:      "port_speed_mbps",
+			Help:      "Linked speed of a port of a Netgear GS308E switch",
 		},
 		[]string{"port", "switch"},
 	)

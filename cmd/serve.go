@@ -18,8 +18,8 @@ func init() {
 }
 
 var serveCmd = &cobra.Command{
-	Use:           "serve",
-	Short:         "start monitoring Netgear GS308E switches and exporting Prometheus metrics",
+	Use:   "serve",
+	Short: "start monitoring Netgear GS308E switches and exporting Prometheus metrics",
 	PreRunE: func(cmd *cobra.Command, args []string) error {
 		return nil
 	},
@@ -32,7 +32,7 @@ var serveCmd = &cobra.Command{
 			return err
 		}
 
-		for _,  switchConfig := range config.Var.Switches {
+		for _, switchConfig := range config.Var.Switches {
 			go func(c config.SwitchConfig) {
 				err = app.MonitorSwitch(c, config.Var.Interval)
 				if err != nil {
@@ -40,7 +40,6 @@ var serveCmd = &cobra.Command{
 				}
 			}(switchConfig)
 		}
-
 
 		http.Handle("/metrics", promhttp.Handler())
 		return http.ListenAndServe(fmt.Sprintf(":%d", config.Var.Port), nil)
