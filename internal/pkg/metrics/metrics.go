@@ -12,9 +12,10 @@ type exporterMetrics struct {
 	PortSpeed        *prometheus.GaugeVec
 }
 
+// Var holds the metrics of the program
 var Var exporterMetrics
 
-// InitMetrics sets new metrics and register them in Prometheus
+// InitMetrics defines the metrics and registers them in Prometheus
 func InitMetrics() {
 	Var.TransmittedBytes = prometheus.NewGaugeVec(
 		prometheus.GaugeOpts{
