@@ -1,5 +1,8 @@
+# list of switches to monitor (default: [])
 switches:
   - url: http://netgear-gs308e.local
     password: password
+# interval in seconds between scrapes (default: 30)
 interval: 30
+# port on which to expose prometheus metrics (default: 8080)
 port: 8080

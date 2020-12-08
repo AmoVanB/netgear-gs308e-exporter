@@ -21,7 +21,7 @@ func InitMetrics() {
 		prometheus.GaugeOpts{
 			Namespace: "netgear_gs308e_exporter",
 			Name:      "tx_bytes",
-			Help:      "The total number of bytes transmitted by a port of a Netgear GS308E switch",
+			Help:      "The total number of bytes transmitted by a port",
 		},
 		[]string{"port", "switch"},
 	)
@@ -31,7 +31,7 @@ func InitMetrics() {
 		prometheus.GaugeOpts{
 			Namespace: "netgear_gs308e_exporter",
 			Name:      "rx_bytes",
-			Help:      "The total number of bytes received by a port of a Netgear GS308E switch",
+			Help:      "The total number of bytes received by a port",
 		},
 		[]string{"port", "switch"},
 	)
@@ -41,7 +41,7 @@ func InitMetrics() {
 		prometheus.GaugeOpts{
 			Namespace: "netgear_gs308e_exporter",
 			Name:      "crc_error_packets",
-			Help:      "The total number of CRC error packets on a port of a Netgear GS308E switch",
+			Help:      "The total number of CRC error packets on a port",
 		},
 		[]string{"port", "switch"},
 	)
@@ -61,7 +61,7 @@ func InitMetrics() {
 		prometheus.GaugeOpts{
 			Namespace: "netgear_gs308e_exporter",
 			Name:      "port_speed_mbps",
-			Help:      "Linked speed of a port of a Netgear GS308E switch",
+			Help:      "Linked speed of a port",
 		},
 		[]string{"port", "switch"},
 	)
