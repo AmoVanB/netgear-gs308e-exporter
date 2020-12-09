@@ -3,23 +3,23 @@
 
 ## Prometheus exporter for the Netgear GS308E Switch
 
-The [Netgear GS308E switch](https://www.netgear.com/support/product/gs308e.aspx) is a 8-port L2 Gigabit Ethernet switch. 
+The [Netgear GS308E switch](https://www.netgear.com/support/product/gs308e.aspx) is a 8-port L2 Gigabit Ethernet switch.
 It has a web management interface, but does not support SNMP.
 
 This exporter fetches port statistics and port stats from the web interface of one or more GS308E switch(es) and exposes them as Prometheus metrics.
- 
+
  ### Usage
- 
+
  #### Configuration file
 
 The URL of the switches to monitor, their passwords, the frequency at which to monitor and the port on which to expose Prometheus metrics can be configured through a YAML config file.
 See the [example config file](config/config.yaml) for documentation and default values.
- 
+
  #### Docker
- 
+
 ```shell script
 docker pull amovanb/netgear-gs308e-exporter:latest
-docker run docker.io/amovanb/netgear-gs308e-exporter:latest -c config.yaml
+docker run -p 8080:8080 -v $(pwd)/config.yml:/etc/netgear-gs308e-exporter/config.yaml docker.io/amovanb/netgear-gs308e-exporter:latest
 ```
 
 #### Locally
@@ -28,7 +28,7 @@ docker run docker.io/amovanb/netgear-gs308e-exporter:latest -c config.yaml
 git clone https://github.com/AmoVanB/netgear-gs308e-exporter.git
 cd netgear-gs308e-exporter
 go build -a -mod=vendor -o ./netgear-gs308e-exporter
-./netgear-gs308e-exporter -c config.yaml
+./netgear-gs308e-exporter -c config.yaml serve
 ```
 
 ### Exported metrics
