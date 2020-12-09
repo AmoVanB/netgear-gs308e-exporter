@@ -1,8 +1,9 @@
-name: build and push latest version on docker hub
+name: build and push a particular version on docker hub
 
 on:
   push:
-    branches: master
+    tags:
+    - v*
   workflow_dispatch:
 
 jobs:
@@ -18,8 +19,11 @@ jobs:
           version: latest
       - name: login to docker hub
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+      - name: get the tag version
+        id: get_version
+        run: echo ::set-output name=VERSION::${GITHUB_REF#refs/tags/}
       - name: build the image
         run: |
           docker buildx build --push \
-            --tag amovanb/netgear-gs308e-exporter:latest \
+            --tag amovanb/netgear-gs308e-exporter:${{ steps.get_version.outputs.VERSION }} \
             --platform linux/amd64,linux/arm/v7,linux/arm64 .
