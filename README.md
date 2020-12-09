@@ -1,4 +1,4 @@
-[![License](https://img.shields.io/github/license/grafana/grafana)](LICENSE)
+[![License](https://img.shields.io/github/license/amovanb/netgear-gs308e-exporter)](LICENSE)
 [![Go Report Card](https://goreportcard.com/badge/github.com/amovanb/netgear-gs308e-exporter)](https://goreportcard.com/report/github.com/amovanb/netgear-gs308e-exporter)
 
 ## Prometheus exporter for the Netgear GS308E Switch
